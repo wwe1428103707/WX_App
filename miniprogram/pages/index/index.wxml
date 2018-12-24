@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<view class='signin' wx:if="{{ishasseat==true}}">
+  <image src='/style/_qiandao.png' bindtap='signIn'></image>
+</view>
+<view class='signin' wx:if="{{ishasseat==true}}">
+  <text bindtap='signIn'>点击签到</text>
+</view>

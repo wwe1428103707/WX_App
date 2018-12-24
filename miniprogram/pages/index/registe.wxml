@@ -1,0 +1,7 @@
+<!--registe.wxml-->
+<view>
+  <input placeholder='输入你的学号例如2015220400001' type='number' maxlength='13' bindinput='changeInputNum'></input>
+  <input placeholder='输入你的姓名例如张三' bindinput='changeInputName'></input>
+  <modal title="注册" cancel-text='取消' hidden="{{mHidden}}" bindcancel="cancelRegiste">注册中</modal>
+  <button bindtap='bundleWXAccount'>注册</button>
+</view>

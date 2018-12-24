@@ -1,0 +1,18 @@
+<view class='msg-box'>
+  <view class='list-view'>
+    <view class='readbooktitle'>
+      <text>已阅读</text>
+    </view>
+    <view class='item' wx:for='{{hasreadbookinfo}}' wx:key="{{index}}">
+      <text class='text1'>{{item}}</text>
+    </view>
+  </view>
+  <view class='list-view'>
+    <view class='readbooktitle'>
+      <text>借阅中</text>
+    </view>
+    <view class='item' wx:for='{{readingbookinfo}}' wx:key="{{index}}">
+      <text class='text1'>{{item}}</text>
+    </view>
+  </view>
+</view>

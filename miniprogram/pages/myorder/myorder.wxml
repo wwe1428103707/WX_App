@@ -1,0 +1,17 @@
+<!--myorder.wxml-->
+<view wx:if="{{ishasseat==false}}">
+  <button bindtap='orderSeat'>你现在还没有座位，赶紧去预约一个吧</button>
+</view>
+
+<view class='seatinfo' wx:if="{{ishasseat==true}}">
+  <text class='myseatinfo' decode="{{true}}" space="{{true}}">{{seatArea}}&nbsp;{{seatFloor}}&nbsp;{{seatNum}} \n</text>
+</view>
+<view class='seatinfo' wx:if="{{ishasseat==true}}">
+  <text class='mylearntime'>我的学习时间:{{mylearntime}}小时</text>
+</view>
+<view class='signin' wx:if="{{ishasseat==true}}">
+  <image src='/style/_qiandao.png' bindtap='signIn'></image>
+</view>
+<view class='signin' wx:if="{{ishasseat==true}}">
+  <text bindtap='signIn'>点击签到</text>
+</view>

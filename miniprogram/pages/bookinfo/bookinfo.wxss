@@ -1,0 +1,43 @@
+/* pages/bookinfo/bookinfo.wxss */
+.input{
+  border:1px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.msg-box{
+  padding: 20px
+}
+
+.sendbox{
+  display: flex;
+}
+
+.place-input{
+  color: #ff6600;
+}
+
+.item{
+  overflow: hidden;
+  border-bottom: 1px dashed #ccc;
+  height: 30px;
+  line-height: 30px;
+}
+
+.text1{
+  float: left;
+}
+
+.closebutton{
+  float: right;
+  margin: 5px 5px 0 0;
+}
+.list-view{
+  margin: 20px 0 0 0;
+}
+
+.msg-info{
+  display: block;
+  margin: 10px 0 0 0;
+  color: #339999;
+}

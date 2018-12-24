@@ -1,0 +1,19 @@
+<!--myinfo.wxml-->
+<view>
+  <button bindtap='registe' wx:if="{{isRegiste==false}}">注册</button>
+  <text wx:if="{{isRegiste==false}}">若已注册仍出现注册按钮，请下拉刷新</text>
+  <view class='avatarImage'>
+    <image src='{{avatarUrl}}'></image>
+  </view>
+</view>
+<view class='learntime'>
+  <text>学习时间：{{learntime}}小时 \n</text>
+</view>
+<view class='learntime'>
+  <image src='/style/_xiaoxi.png' bindtap='goToInformationCenter' class='information'></image>
+  <text bindtap='goToInformationCenter' decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;消息中心</text>
+</view>
+<view class='learntime'>
+  <image src='/style/_shezhi.png' bindtap='goToSetting' class='information'></image>
+  <text bindtap='goToSetting' decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;个人设置</text>
+</view>

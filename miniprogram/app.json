@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/logs/logs",
+    "pages/myinfo/myinfo",
+    "pages/mybook/mybook",
+    "pages/myorder/myorder",
+    "pages/index/registe",
+    "pages/bookinfo/bookinfo",
+    "pages/readrecord/readrecord",
+    "pages/lendbook/lendbook"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "UESTC图书馆",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "color": "#ffffff",
+        "selectedColor": "#000000",
+        "iconPath": "style/_diannao.png",
+        "selectedIconPath": "style/_diannao.png"
+      },
+      {
+        "pagePath": "pages/mybook/mybook",
+        "text": "我的图书",
+        "color": "#ffffff",
+        "selectedColor": "#000000",
+        "iconPath": "style/_shizhong.png",
+        "selectedIconPath": "style/_shizhong.png"
+      },
+      {
+        "pagePath": "pages/myorder/myorder",
+        "text": "我的座位",
+        "color": "#ffffff",
+        "selectedColor": "#000000",
+        "iconPath": "style/_dingwei.png",
+        "selectedIconPath": "style/_dingwei.png"
+      },
+      {
+        "pagePath": "pages/myinfo/myinfo",
+        "text": "个人中心",
+        "color": "#ffffff",
+        "selectedColor": "#000000",
+        "iconPath": "style/_geren.png",
+        "selectedIconPath": "style/_geren.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+/* pages/mybook/mybook.wxss */
+.bookinfo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 180rpx;
+  height: 125rpx;
+}
+
+.bookinfo image{
+  width: 60rpx;
+  height: 60rpx;
+  position: relative;
+  top : 5rpx;
+}
+
+.bookinfo text{
+  font-size: 40rpx;
+  position: relative;
+  left: 40rpx;
+  color: #2077e6;
+}

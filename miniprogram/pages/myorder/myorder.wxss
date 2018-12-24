@@ -1,0 +1,30 @@
+/* pages/myorder/myorder.wxss */
+.seatinfo{
+  justify-content: center;
+  display: flex;
+  position: relative;
+  top: 200rpx;
+}
+
+.myseatinfo{
+  font-size:35rpx;
+  font-weight: 700;
+}
+
+.mylearntime{
+  font-size:50rpx;
+  font-weight: 400;
+  color: #c1cada;
+}
+
+.signin{
+  justify-content: center;
+  display: flex;
+  position: relative;
+  top:500rpx;
+}
+
+.signin image{
+  width: 100rpx;
+  height: 100rpx;
+}

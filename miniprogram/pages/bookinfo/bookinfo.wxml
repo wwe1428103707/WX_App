@@ -1,0 +1,7 @@
+<view class='msg-box'>
+  <view class='list-view'>
+    <view class='item' wx:for='{{bookinfo}}' wx:key="{{index}}">
+      <text class='text1'>{{item.bookname}}</text>
+    </view>
+  </view>
+</view>

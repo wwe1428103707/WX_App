@@ -1,0 +1,17 @@
+<!--mybook.wxml-->
+<view class='bookinfo' bindtap='readrecord'>
+  <image src='/style/_jilu.png'></image>
+  <text>我的借书记录</text>
+</view>
+<view class='bookinfo' bindtap='lendBook'>
+  <image src='/style/_biji.png'></image>
+  <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我要借书</text>
+</view>
+<view class='bookinfo'>
+  <image src='/style/_liwu.png'></image>
+  <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;传递图书</text>
+</view>
+<view class='bookinfo' bindtap='bookInfo'>
+  <image src='/style/_sousuo.png' bindtap='bookInfo'></image>
+  <text>查看馆藏信息</text>
+</view>

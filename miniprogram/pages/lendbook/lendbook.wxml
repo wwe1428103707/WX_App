@@ -1,7 +1,7 @@
 <!--pages/lendbook/lendbook.wxml-->
 <view class='msg-box'>
   <view class='list-view'>
-    <view class='item' wx:for='{{bookinfo}}' wx:key="{{index}}" bindtap='lendBook' data-name='{{item.bookname}}'>
+    <view class='item' wx:for='{{bookinfo}}' wx:key="{{index}}" bindtap='lendBook' data-name='{{item.bookname}}' data-_id='{{item._id}}' data-bookid='{{item.bookid}}'>
       <text class='text1'>{{item.bookname}}</text>
     </view>
   </view>

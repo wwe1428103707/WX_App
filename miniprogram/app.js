@@ -101,23 +101,38 @@ App({
     //   })
 
     // }
-    db.collection('signin').doc(this.globalData._id_).update({
-      data: {
-        lastday: db.command.inc(1),
-        day: db.command.inc(1)
-      },
-      success: res => {
-        this.globalData.isSignIn = true;
-        wx.showToast({
-          title: '签到成功',
-        })
-        console.log("数据库更新到成功", res.data._openid);
-      },
-      fali: err => {
-        wx.showToast({
-          title: '签到失败，请重试',
-        })
-        console.log('签到失败', err)
+    db.collection('signin').where({
+      _openid:this.globalData.openid
+    }).get({
+      success:res=>{
+        if(res.data[0].flag==false){
+          db.collection('signin').doc(this.globalData._id_).update({
+            data: {
+              lastday: db.command.inc(1),
+              day: db.command.inc(1),
+              flag: true
+            },
+            success: res => {
+              this.globalData.isSignIn = true;
+              wx.showToast({
+                title: '签到成功',
+              })
+              console.log("数据库更新到成功", res.data._openid);
+            },
+            fali: err => {
+              wx.showToast({
+                title: '签到失败，请重试',
+              })
+              console.log('签到失败', err)
+            }
+          })
+        }
+        else{
+          wx.showToast({
+            title: '你今日以签到完成',
+            content: '你今日以签到完成',
+          })
+        }
       }
     })
   },
@@ -255,7 +270,71 @@ App({
       fail: err => {
         console.log(err)
       }
-    })
+    });
+    // db.collection('flag').get({
+    //   success:res=>{
+    //     if (res.data[0].flag == true){
+    //     }
+    //   }
+    // })
     return this.globalData.isRegiste;
   }
 })
+
+
+
+// Used in test
+// db.collection('book').add({
+//   data: {
+//     bookid: "0001",
+//     bookname: "微积分上",
+//     date: null,
+//     lender: null,
+//     order: null,
+//   }
+// })
+// db.collection('book').add({
+//   data: {
+//     bookid: "0002",
+//     bookname: "微积分下",
+//     date: null,
+//     lender: null,
+//     order: null,
+//   }
+// })
+// db.collection('book').add({
+//   data: {
+//     bookid: "0003",
+//     bookname: "线性代数",
+//     date: null,
+//     lender: null,
+//     order: null,
+//   }
+// })
+// db.collection('book').add({
+//   data: {
+//     bookid: "0004",
+//     bookname: "概率论与数理统计",
+//     date: null,
+//     lender: null,
+//     order: null,
+//   }
+// })
+// db.collection('book').add({
+//   data: {
+//     bookid: "0005",
+//     bookname: "Java程序设计",
+//     date: null,
+//     lender: null,
+//     order: null,
+//   }
+// })
+// db.collection('book').add({
+//   data: {
+//     bookid: "0006",
+//     bookname: "数据结构与算法",
+//     date: null,
+//     lender: null,
+//     order: null,
+//   }
+// })

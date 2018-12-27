@@ -22,30 +22,47 @@ Page({
   lendBook: function(event) {
     console.log(event.currentTarget.dataset.name);
     const _ = db.command
-    var bookid
-    db.collection("book").where({
-      bookname: event.currentTarget.dataset.name,
+    var stuid
+    console.log(app.globalData.openid)
+    db.collection("student").where({
+      _openid:app.globalData.openid
     }).get({
-      success: res => {
-        bookid = res.data[0].bookid
-        console.log(bookid)
-        console.log(app.globalData.openid)
-        db.collection("record").where({
-          _openid: app.globalData.openid
-        }).get({
-          success: res => {
-            console.log(res.data[0]._id)
-            db.collection("record").doc(res.data[0]._id).update({
-              data: {
-                isreading: _.push(bookid)
-              }
-            })
-          }
+      success:res=>{
+        stuid = res.data[0].studentid
+        wx.cloud.callFunction({
+          name: "lendbook",
+          data: {
+            _id: event.currentTarget.dataset._id,
+            studentID: stuid,
+          },
+          success: function (res) {
+            console.log(res)
+          },
+          fail: console.error
         })
-
+        // console.log(parseInt(stuid))
+        // db.collection("book").doc(event.currentTarget.dataset._id).update({
+        //   data: {
+        //     lender: parseInt(stuid)
+        //   }
+        // })
       }
     })
-
+    var bookid = event.currentTarget.dataset.bookid
+    db.collection("record").where({
+      _openid: app.globalData.openid
+    }).get({
+      success: res => {
+        var flag = true
+        for (var i = 0; i < res.data[0].isreading.length; i++) {
+          console.log(res.data[0].isreading[i])
+          console.log(bookid)
+          if (bookid == res.data[0].isreading[i]) {
+            flag = false
+          }
+        }
+      }
+    })
   },
 
   changeinputval(ev) {
@@ -69,7 +86,8 @@ Page({
    */
   data: {
     inputval: '',
-    bookinfo: []
+    bookinfo: [],
+    bookid: [],
   },
 
   /**

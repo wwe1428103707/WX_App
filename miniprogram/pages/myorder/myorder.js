@@ -1,3 +1,5 @@
+const db=wx.cloud.database()
+const app = getApp()
 Page({
 
   /**
@@ -8,11 +10,15 @@ Page({
     seatArea : null,
     seatFloor : null,
     seatNum : null,
+    mylearntime : 0,
   },
 
   checkSeatStatus(){
     //去数据库中检查该用户是否有座位
     var flag = true;
+    if(this.data.seatNum == null){
+      flag = false
+    }
     this.setData({
       ishasseat : flag,
     })
@@ -32,7 +38,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.checkSeatStatus();
+    db.collection("signin").where({
+      _openid:app.globalData.openid
+    }).get({
+      success:res=>{
+        this.setData({
+          mylearntime:(res.data[0].day*7)
+        })
+      }
+    });
+    db.collection("seat").where({
+      studentId: app.globalData.studentId
+    }).get({
+      success:res=>{
+        this.setData({
+          seatArea: res.data[0].seatArea,
+          seatFloor: res.data[0].seatFloor,
+          seatNum: res.data[0].seatNum,
+        });
+        this.checkSeatStatus();
+      }
+    })
   },
 
   /**

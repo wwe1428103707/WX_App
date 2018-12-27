@@ -7,6 +7,15 @@ Page({
     
   },
 
+  transBook(){
+    wx.navigateTo({
+      url: '/pages/tranbook/transbook',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+
   readrecord(){
     wx.navigateTo({
       url: '/pages/readrecord/readrecord',

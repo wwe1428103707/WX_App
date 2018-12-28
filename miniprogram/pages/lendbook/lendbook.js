@@ -37,6 +37,7 @@ Page({
           },
           success: function (res) {
             console.log(res)
+            this.onLoad()
           },
           fail: console.error
         })
@@ -53,14 +54,14 @@ Page({
       _openid: app.globalData.openid
     }).get({
       success: res => {
-        var flag = true
-        for (var i = 0; i < res.data[0].isreading.length; i++) {
-          console.log(res.data[0].isreading[i])
-          console.log(bookid)
-          if (bookid == res.data[0].isreading[i]) {
-            flag = false
+        db.collection("record").doc(res.data[0]._id).update({
+          data:{
+            isreading: _.push(bookid)
+          },
+          success:res=>{
+            this.onLoad
           }
-        }
+        })
       }
     })
   },

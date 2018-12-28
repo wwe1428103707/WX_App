@@ -1,7 +1,4 @@
 <!--pages/tranbook/transbook.wxml-->
-<view class='list-title'>
-  <text> 选择你要传递给下一名订阅者的图书 </text>
-  </view>
 <view class='msg-box'>
   <view class='list-view'>
     <view class='item' wx:for='{{bookinfo}}' wx:key="{{index}}" bindtap='transBook' data-name='{{item.bookname}}' data-_id='{{item._id}}' data-bookid='{{item.bookid}}'>

@@ -29,11 +29,22 @@ Page({
     }).get({
       success: res => {
         stuid = res.data[0].studentid
+        var booklender;
+        var bookorder;
+        db.collection("book").where({
+          bookid: event.currentTarget.dataset.bookid
+        }).get({
+          success:res=>{
+            booklender = res.data[0].lender
+            bookorder = res.data[0].order
+          }
+        })
         wx.cloud.callFunction({
           name: "transbook",
           data: {
-            _id: event.currentTarget.dataset._id,
-            studentID: stuid,
+            order: event.currentTarget.dataset._id,
+            lender: stuid,
+            bookid: event.currentTarget.dataset.bookid
           },
           success: function (res) {
             console.log(res)
@@ -98,13 +109,16 @@ Page({
       _openid:app.globalData.openid
     }).get({
       success:res=>{
+        console.log("11111"+res.data[0].studentid)
         db.collection("book").where({
-          lender: res.data[0].studentid,
+          lender: parseInt(res.data[0].studentid),
         }).get({
           success: res => {
+            console.log("&&&&&&&&&&&!"+res.data[0])
             this.setData({
               bookinfo: res.data
             })
+            console.log(bookinfo)
           }
         })
       }

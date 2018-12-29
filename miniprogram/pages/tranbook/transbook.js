@@ -32,24 +32,27 @@ Page({
         var booklender;
         var bookorder;
         db.collection("book").where({
-          bookid: event.currentTarget.dataset.bookid
+          bookname: event.currentTarget.dataset.name
         }).get({
           success:res=>{
+            console.log("===========================")
+            console.log(res.data[0].lender)
+            console.log(res.data[0].order)
             booklender = res.data[0].lender
             bookorder = res.data[0].order
+            wx.cloud.callFunction({
+              name: "transbook",
+              data: {
+                order: res.data[0].order,
+                lender: res.data[0].lender,
+                _id: res.data[0]._id
+              },
+              success: function (res) {
+                console.log(res)
+              },
+              fail: console.error
+            })
           }
-        })
-        wx.cloud.callFunction({
-          name: "transbook",
-          data: {
-            order: event.currentTarget.dataset._id,
-            lender: stuid,
-            bookid: event.currentTarget.dataset.bookid
-          },
-          success: function (res) {
-            console.log(res)
-          },
-          fail: console.error
         })
         // console.log(parseInt(stuid))
         // db.collection("book").doc(event.currentTarget.dataset._id).update({
